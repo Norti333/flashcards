@@ -1,7 +1,25 @@
 var digitalFlashApp = function () {
+    var decks = []
 
     var errorHandler = function (err, status) {
         console.error(status);
+    }
+
+    $.ajax({
+        url: '/decks',
+        type: 'get',
+        error: errorHandler,
+        success: function (data) {
+            decks = data
+            renderDecks()
+        }
+    })
+
+    var renderDecks = function () {
+        var source = $('#render-deck').html();
+        var template = Handlebars.compile(source);
+        var newHTML = template(decks);
+        $('.deckSelector').append(newHTML);
     }
 
     var addDeck = function (deckName) {
@@ -40,7 +58,7 @@ var digitalFlashApp = function () {
                         deck_id: deckId,
                     },
                     error: errorHandler,
-                    success: function (data){
+                    success: function (data) {
                         // card saved
                     },
                 })
@@ -57,3 +75,7 @@ var digitalFlashApp = function () {
 }
 
 var app = digitalFlashApp
+
+
+
+
