@@ -1,10 +1,14 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/spacebookDB', function () {
+mongoose.connect('mongodb://localhost/digitalflashDB', function () {
   console.log("DB connection established!!!");
 })
+
+var Card = require("./models/cardModel")
+var Deck = require("./models/deckModel")
+
+
 
 var app = express();
 app.use(express.static('public'));
@@ -16,5 +20,5 @@ app.use(bodyParser.urlencoded({
 
 
 app.listen(8000, function () {
-  console.log("Get me on 8000 ;-)");
+  console.log('Server up and running on port 3000 ;-)');
 });
