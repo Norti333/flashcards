@@ -75,5 +75,3 @@ $('').on('click','.play',function(){
 $('').on('click','.',renderCards)
 
 
-//getCards(deckId)
-// rendercard()

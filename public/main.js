@@ -45,6 +45,7 @@ var digitalFlashApp = function () {
             data: {
                 front: front,
                 back: back,
+                deck: deckId
             },
             error: errorHandler,
             success: function (data) {
