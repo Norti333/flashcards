@@ -55,6 +55,7 @@ var digitalFlashPlayApp = function () {
             cards.splice(randCard, 1);
             randCard = Math.floor(Math.random() * cards.length);
         }
+        return cards = shuffleArray
     }
 
     return {
