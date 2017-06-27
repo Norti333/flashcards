@@ -32,6 +32,7 @@ var digitalFlashPlayApp = function () {
             })
         }
         shuffleCards()
+        renderCards()
     };
 
 
@@ -65,6 +66,13 @@ var digitalFlashPlayApp = function () {
 };
 
 var app = digitalFlashPlayApp
+//when pressing play
+$('').on('click','.play',function(){
+    var deckId = $(this).closest('option').data().id;
+    getCards(deckId)
+})
+//when pressing next
+$('').on('click','.',renderCards)
 
 
 //getCards(deckId)

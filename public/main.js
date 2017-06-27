@@ -74,8 +74,21 @@ var digitalFlashApp = function () {
     }
 }
 
-var app = digitalFlashApp
+var app = digitalFlashApp;
 
 
 
+//add deck
+$('').click(function () {
+    var deckName = $(this).siblings('.input-deck-name').val();
+    addDeck(deckName);
+})
 
+//add card
+
+$('').click(function () {
+    var front = $(this).siblings('.input-front').val();
+    var back = $(this).siblings('.input-back').val();
+    var deckId = $(this).closest('deck-containor').data().id;
+    addCard(front, back, deckId);
+})
