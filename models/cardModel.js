@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var Schema=mongoose.Schema;
 
 var cardSchema = new Schema({
-front: String,
-back: String,
+front: {type: String, required: true},
+back: {type: String, required: true},
 hint: String,
 level: Number,
 deck: {type:Schema.Types.ObjectId,ref:'deck'}
@@ -44,8 +44,8 @@ var card5= new Card({
 front: "2 x 2",
 back: "4",
 hint: "count 2 2 times!",
-level:2,
-deck: deckModel.js\deck1
+level:2
+
 });
 
 
@@ -53,5 +53,5 @@ deck: deckModel.js\deck1
 // card2.save()
 // card3.save()
 // card4.save()
-card5.save()
+// card5.save()
 module.exports = Card;

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema=mongoose.Schema;
 
 var deckSchema = new Schema({
-name: String,
+name: {type: String, required: true},
 cards:[{type:Schema.Types.ObjectId,ref:'card'}]
 });
 var Deck = mongoose.model('deck', deckSchema);
@@ -13,6 +13,5 @@ name: "Deck1",
 cards: []
 });
 
-deck1.save();
-
+// deck1.save();
 module.exports = Deck;
