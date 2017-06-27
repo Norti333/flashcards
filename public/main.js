@@ -32,6 +32,7 @@ var digitalFlashApp = function () {
             },
             error: errorHandler,
             success: function (data) {
+                console.log(data)
                 // data = deck id 
                 // deck id will go to the add card page.
                 //the id will be used to update the deck upon card creation
@@ -80,8 +81,8 @@ var app = digitalFlashApp;
 
 
 //add deck
-$('').click(function () {
-    var deckName = $(this).siblings('.input-deck-name').val();
+$('#addDeckSaveBtn').click(function () {
+    var deckName = $(this).siblings('#nameOfAddedDeck').val();
     addDeck(deckName);
 })
 
