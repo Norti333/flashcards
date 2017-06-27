@@ -6,8 +6,8 @@ var cardSchema = new Schema({
 front: {type: String, required: true},
 back: {type: String, required: true},
 hint: String,
-level: Number,
-deck: {type:Schema.Types.ObjectId,ref:'deck'}
+level: Number
+// deck: {type:Schema.Types.ObjectId,ref:'deck'}
 });
 
 var Card = mongoose.model('card', cardSchema);

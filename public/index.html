@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -8,66 +9,74 @@
 </head>
 
 <body>
-    <div><h1>Digital Flash!</h1>
+    <div>
+        <h1>Digital Flash!</h1>
         <div>
-          <h2>Choose Deck</h2>
-          <select name= "deck">
-              <option value = "function">Function</option>
-              <option value = "elements">Elements</option>
-              <option value = "animals">Animals</option>
-              <option value = "math">Mathematics</option>
-            
-          </select>
-
+            <h2>Choose Deck</h2>
+            <select name="selectDeck">
+                <option value="function">Function</option>
+                <option value="elements">Elements</option>
+                <option value="animals">Animals</option>
+                <option value="math">Mathematics</option>
+            </select>
         </div>
         <div>
-          <button class= "addDeck"> Add</button>
-          <span> <button class = "playFlash"> Play</button></span>
+            <button class="editDeck"> Edit</button>
+            <span> <button class = "playFlash"> Play</button></span>
         </div>
     </div>
-
-    <form>
-      <h3> Question:</h3> <br>
-      <div>
-          <div class= "question"></div>
-        
-          
-          <h3> Answer:</h3><br>
-          
-          <div> 
-            <input type="text" id="inputAnswer" placeholder="Enter your answer">
-          </div>
-
-          <div class= "answer"></div>
-
-          <div>
-             <button id="showAnswer"> Show</button>
-             <span> <button id ="next">Next</button></span>
-          </div> 
-
-          <div class= "goodJob"></div>
-        
-      </div>
-    </form>
-
-    <form>
-        <h2> Add Deck </h2>
-        <div>
-          <h3>Name: </h3>
-          <input type="text" id="nameOfAddedDeck"><br>
-        </div>
-        <div>
-          <button id="addDeckSaveBtn">Save</button>
-
+    <!-- <form>
+        <h3> Question:</h3>
+        <br>
+              <div>
+            <div class="question"></div>
+            <h3> Answer:</h3>
+            <br>
+            <div>
+                <input type="text" id="inputAnswer" placeholder="Enter your answer">
+            </div>
+            <div class="answer"></div>
+            <div>
+                <button id="showAnswer"> Show</button>
+                <span> <button id ="next">Next</button></span>
+            </div>
+            <div class="goodJob"></div>
         </div>
     </form>
-
-    
-    
-    <!-- <script id="placeholder-template" type="text/x-handlebars-template"></script> -->
+    <form> -->
+    <h2> Add Deck </h2>
+    <div>
+        <h3>Name: </h3>
+        <input type="text" id="nameOfAddedDeck">
+        <br>
+    </div>
+    <div>
+        <button type="button" id="addDeckSaveBtn">Save</button>
+       <!--  <button type="button" class="showDeckButton">Show Deck</button> -->
+        <p>List of Decks:</p>
+        <div class="deckList"></div>
+    </div>
+   
+    <script id="deck-template" type="text/x-handlebars-template">
+        {{#each this}}
+        <div class="deck" data-id="{{_id}}">
+            Name: {{name}}
+            <button type='button' class='addCard'>Add Card</button>
+            <div class="addCardInputs">
+                <h4>Front</h4>
+                <input type="text" class="frontText">
+                <h4>Back</h4>
+                <input type="text" class="backText">
+                // <h4>Background Color</h4>
+                // <input type="color" class="form-control">
+                <button type="button" class="btn btn-primary saveCardButton">Save Card</button>
+            </div>
+        </div>
+        {{/each}}
+    </script>
     <script src="jquery/dist/jquery.js"></script>
-    <script src="handlebars/dist/handlebars.js"></script>
     <script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="handlebars/dist/handlebars.js"></script>
     <script src="main.js"></script>
 </body>
 

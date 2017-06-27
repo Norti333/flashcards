@@ -1,28 +1,36 @@
-var digitalFlashApp = function () {
+var digitalFlashApp = function() {
     var decks = []
 
-    var errorHandler = function (err, status) {
-        console.error(status);
+    // var errorHandler = function(err, status) {
+    //     console.error(status);
+    // }
+    var getDecks = function() {
+        $.ajax({
+            url: '/decks',
+            type: 'get',
+            error: function(err, status) {
+                console.error(status)
+            },
+            success: function(data) {
+                decks = data
+                for (var i = 0; i < decks.length; i++) {
+                    var deck_name = decks[i].name
+                }
+                renderDecks(deck_name);
+            }
+        })
     }
 
-    $.ajax({
-        url: '/decks',
-        type: 'get',
-        error: errorHandler,
-        success: function (data) {
-            decks = data
-            renderDecks()
-        }
-    })
 
-    var renderDecks = function () {
-        var source = $('#render-deck').html();
+    var renderDecks = function() {
+        $('.deckList').empty()
+        var source = $('#deck-template').html();
         var template = Handlebars.compile(source);
         var newHTML = template(decks);
-        $('.deckSelector').append(newHTML);
+        $('.deckList').append(newHTML);
     }
 
-    var addDeck = function (deckName) {
+    var addDeck = function(deckName) {
         $.ajax({
             url: "/decks",
             type: "post",
@@ -30,67 +38,99 @@ var digitalFlashApp = function () {
                 name: deckName,
                 cards: [],
             },
-            error: errorHandler,
-            success: function (data) {
-                console.log(data)
+            error: function(err, status) {
+                console.error(status);
+            },
+            success: function(data) {
+                decks.push(data);
+                for (var i = 0; i < decks.length; i++) {
+                    var deck_name = decks[i].name;
+                }
+                renderDecks(deck_name);
+
                 // data = deck id 
                 // deck id will go to the add card page.
                 //the id will be used to update the deck upon card creation
             }
         });
     }
-    var addCard = function (front, back, deckId) {
+    var addCard = function(front, back, deckId) {
         $.ajax({
-            url: '/cards',
+            url: '/decks/' + deckId + '/cards',
             type: "post",
             data: {
                 front: front,
-                back: back,
-                deck: deckId
+                back: back
+                // deckId: deckId
             },
-            error: errorHandler,
-            success: function (data) {
-                // data = card _id
-                $.ajax({
-                    // push card to id to deck.cards array
-                    url: '/decks',
-                    type: 'put',
-                    data: {
-                        card_id: data,
-                        deck_id: deckId,
-                    },
-                    error: errorHandler,
-                    success: function (data) {
-                        // card saved
-                    },
-                })
-
-            }
+            error: function(err, status) {
+                console.error(status)
+            },
+            success: function(data) {
+                    console.log(data)
+                }
+                // var cardId = data._id
+                // $.ajax({
+                //     // push card with id to deck.cards array
+                //     url: '/decks/' + deckId,
+                //     type: 'put',
+                //     data: {
+                //         card: cardId
+                //             // deck_id: deckId,
+                //     },
+                //     error: function(err, status) {
+                //         console.error(status)
+                //     },
+                //     success: function(data) {
+                //         // card saved
+                //     },
         })
+
     }
+
+
 
 
     return {
         addDeck: addDeck,
         addCard: addCard,
+        getDecks: getDecks
     }
 }
 
-var app = digitalFlashApp;
-
-
+var app = digitalFlashApp();
+app.getDecks();
 
 //add deck
-$('#addDeckSaveBtn').click(function () {
-    var deckName = $(this).siblings('#nameOfAddedDeck').val();
-    addDeck(deckName);
+$('#addDeckSaveBtn').click(function() {
+    var deckName = $('#nameOfAddedDeck').val();
+    if (deckName == "") {
+        alert("Please give your deck a name.")
+    } else {
+        app.addDeck(deckName);
+    }
 })
 
-//add card
+//get existing decks
 
-$('').click(function () {
-    var front = $(this).siblings('.input-front').val();
-    var back = $(this).siblings('.input-back').val();
-    var deckId = $(this).closest('deck-containor').data().id;
-    addCard(front, back, deckId);
+// $('.showDeckButton').click(function() {
+//     app.getDecks();
+// })
+
+//make 'add card' available
+
+$('.deckList').on("click", ".addCard", function() {
+    $(this).siblings('.addCardInputs').show()
+
 })
+
+// add card
+
+$('.deckList').on("click", ".saveCardButton", function() {
+    var front = $(this).siblings('.frontText').val();
+    var back = $(this).siblings('.backText').val();
+    var deckId = $(this).closest('.deck').data().id;
+    app.addCard(front, back, deckId);
+
+})
+
