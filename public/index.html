@@ -5,38 +5,25 @@
     <meta charset="UTF-8">
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <title>Digital Flash</title>
+    <title>Flash Cards</title>
 </head>
-<!-- <div>
-        <h1>Digital Flash!</h1>
-        <div>
-            <h2>Choose Deck</h2>
-            <select name="selectDeck">
-                <option value="function">Function</option>
-                <option value="elements">Elements</option>
-                <option value="animals">Animals</option>
-                <option value="math">Mathematics</option>
-            </select>
-        </div>
-        <div>
-            <button class="editDeck"> Edit</button>
-            <span> <button class = "playFlash"> Play</button></span>
-        </div>
-    </div> -->
 
 <body>
     <div class="section">
         <div class="jumbotron title">
-            <h1>flashCards</h1>
+            FLASH CARDS
         </div>
         <div class="sideColumn">
-            <div class="dropdown">
-                <button class="btn dropdown-toggle btn-block dropdownButton" type="button" data-toggle="dropdown">Decks
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu deckList">
-                </ul>
+            <div class="spacing">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle btn-block dropdownButton" type="button" data-toggle="dropdown">Decks
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu deckList">
+                        <!--                     DECKS ARE HERE
+ -->
+                    </ul>
+                </div>
             </div>
-            
             <div>
                 <h2> Add Deck </h2>
                 <h3>Name: </h3>
@@ -46,23 +33,23 @@
             <div>
                 <button type="button" id="addDeckSaveBtn">Save</button>
             </div>
+            <div class="addCardInputs">
+                <h2>Add a Card</h2>
+                <h4>Front</h4>
+                <input type="text" class="frontText">
+                <h4>Back</h4>
+                <input type="text" class="backText">
+                <button type="button" class="saveCard">Save</button>
+            </div>
         </div>
         <div class="playArea">
-        <div class="cardList"></div>
-        <div class="addCardInputs">
-            <h4>Front</h4>
-            <input type="text" class="frontText">
-            <h4>Back</h4>
-            <input type="text" class="backText">
-            <button type="button" class="saveCard">Save</button>
+            <div class="cardList"></div>
         </div>
     </div>
-    </div>
-    
     <script id="deck-template" type="text/x-handlebars-template">
         <li class="deck" data-id="{{_id}}"><a href="#">{{name}}
         <button type="button" class="deleteDeck">Delete Deck</button>
-        <button type='button' class='addCardSaveBtn'>Add Card</button>
+        <button type='button' class='addCardBtn'>Add Card</button>
         </a></li>
     </script>
     <script id="card-template" type="text/x-handlebars-template">

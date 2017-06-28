@@ -32,7 +32,7 @@ var digitalFlashApp = function() {
 
     var renderCards = function(deckIndex) {
         var deck = $(".deck")[deckIndex];
-        var $cardlist = $(deck).find('.cardList')
+        var $cardlist = $(deck).closest('.sideColumn').siblings('.playArea').find('.cardList')
         $cardlist.empty();
         var source = $('#card-template').html();
         var template = Handlebars.compile(source);
@@ -133,24 +133,28 @@ $('#addDeckSaveBtn').click(function() {
 
 
 //make 'add card' available
-
-$('.deckList').on("click", ".addCardSaveBtn", function() {
-    $(this).siblings('.addCardInputs').show()
+var thisDeckId;
+var thisDeckIndex;
+$('.deckList').on("click", ".addCardBtn", function() {
+    thisDeckId = $(this).closest('.deck').data().id
+    thisDeckIndex = (this).closest('.deck').index
+    $('.addCardInputs').show()
 
 })
 
 // add card
 
-$('.deckList').on("click", ".saveCard", function() {
+$(".saveCard").click(function() {
     var front = $(this).siblings('.frontText').val();
     var back = $(this).siblings('.backText').val();
-    var deckId = $(this).closest('.deck').data().id;
-    var deckIndex = $(this).closest('.deck').index();
+    var deckId = thisDeckId;
+    var deckIndex = thisDeckIndex;
     var newCard = {
         front: front,
         back: back
     }
     app.addCard(newCard, deckId, deckIndex);
+   
 
 })
 
