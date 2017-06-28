@@ -25,25 +25,7 @@
             <span> <button class = "playFlash"> Play</button></span>
         </div>
     </div>
-    <!-- <form>
-        <h3> Question:</h3>
-        <br>
-              <div>
-            <div class="question"></div>
-            <h3> Answer:</h3>
-            <br>
-            <div>
-                <input type="text" id="inputAnswer" placeholder="Enter your answer">
-            </div>
-            <div class="answer"></div>
-            <div>
-                <button id="showAnswer"> Show</button>
-                <span> <button id ="next">Next</button></span>
-            </div>
-            <div class="goodJob"></div>
-        </div>
-    </form>
-    <form> -->
+  
     <h2> Add Deck </h2>
     <div>
         <h3>Name: </h3>
@@ -52,27 +34,30 @@
     </div>
     <div>
         <button type="button" id="addDeckSaveBtn">Save</button>
-       <!--  <button type="button" class="showDeckButton">Show Deck</button> -->
+        
         <p>List of Decks:</p>
         <div class="deckList"></div>
     </div>
-   
     <script id="deck-template" type="text/x-handlebars-template">
-        {{#each this}}
         <div class="deck" data-id="{{_id}}">
-            Name: {{name}}
-            <button type='button' class='addCard'>Add Card</button>
+            <h1>Name: {{name}}</h1>
+            <div class="cardList"></div>
+            <button type='button' class='addCardSaveBtn'>Add Card</button>
             <div class="addCardInputs">
                 <h4>Front</h4>
                 <input type="text" class="frontText">
                 <h4>Back</h4>
-                <input type="text" class="backText">
-                // <h4>Background Color</h4>
-                // <input type="color" class="form-control">
-                <button type="button" class="btn btn-primary saveCardButton">Save Card</button>
+               
+                <input type="text" class = "backText">
+                <button type="button" class= "saveCard">Save</button>
             </div>
         </div>
-        {{/each}}
+    </script>
+    <script id="card-template" type="text/x-handlebars-template">
+        <div class="card" data-id="{{_id}}">
+            <h3 class="front"> Front: {{front}}</h3>
+            <h3 class="back"> Back: {{back}}</h3>
+        </div>
     </script>
     <script src="jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>

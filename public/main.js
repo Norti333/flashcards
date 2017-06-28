@@ -12,11 +12,8 @@ var digitalFlashApp = function() {
                 console.error(status)
             },
             success: function(data) {
-                decks = data
-                for (var i = 0; i < decks.length; i++) {
-                    var deck_name = decks[i].name
-                }
-                renderDecks(deck_name);
+                decks = data;
+                renderDecks();
             }
         })
     }
@@ -26,9 +23,26 @@ var digitalFlashApp = function() {
         $('.deckList').empty()
         var source = $('#deck-template').html();
         var template = Handlebars.compile(source);
-        var newHTML = template(decks);
-        $('.deckList').append(newHTML);
+        for (var i = 0; i < decks.length; i++) {
+            var newHTML = template(decks[i]);
+            $('.deckList').append(newHTML);
+            renderCards(i)
+        }
     }
+
+    var renderCards = function(deckIndex) {
+        var deck = $(".deck")[deckIndex];
+        var $mylist  = $(deck).find('.cardList')
+        $mylist.empty();
+        var source = $('#card-template').html();
+        var template = Handlebars.compile(source);
+        for (var i = 0; i < decks[deckIndex].cards.length; i++) {
+            var newHTML = template(decks[deckIndex].cards[i]);
+            $mylist.append(newHTML);
+        }
+    }
+
+
 
     var addDeck = function(deckName) {
         $.ajax({
@@ -43,47 +57,25 @@ var digitalFlashApp = function() {
             },
             success: function(data) {
                 decks.push(data);
-                for (var i = 0; i < decks.length; i++) {
-                    var deck_name = decks[i].name;
-                }
-                renderDecks(deck_name);
+                renderDecks();
 
-                // data = deck id 
-                // deck id will go to the add card page.
-                //the id will be used to update the deck upon card creation
             }
         });
     }
-    var addCard = function(front, back, deckId) {
+    var addCard = function(newCard, deckId, deckIndex) {
         $.ajax({
             url: '/decks/' + deckId + '/cards',
             type: "post",
-            data: {
-                front: front,
-                back: back
-                // deckId: deckId
-            },
+            data: newCard,
             error: function(err, status) {
                 console.error(status)
             },
             success: function(data) {
-                    console.log(data)
+                console.log(data)
+                decks[deckIndex]=data;
+                renderCards(deckIndex);
                 }
-                // var cardId = data._id
-                // $.ajax({
-                //     // push card with id to deck.cards array
-                //     url: '/decks/' + deckId,
-                //     type: 'put',
-                //     data: {
-                //         card: cardId
-                //             // deck_id: deckId,
-                //     },
-                //     error: function(err, status) {
-                //         console.error(status)
-                //     },
-                //     success: function(data) {
-                //         // card saved
-                //     },
+              
         })
 
     }
@@ -95,6 +87,7 @@ var digitalFlashApp = function() {
         addDeck: addDeck,
         addCard: addCard,
         getDecks: getDecks
+
     }
 }
 
@@ -119,18 +112,22 @@ $('#addDeckSaveBtn').click(function() {
 
 //make 'add card' available
 
-$('.deckList').on("click", ".addCard", function() {
+$('.deckList').on("click", ".addCardSaveBtn", function() {
     $(this).siblings('.addCardInputs').show()
 
 })
 
 // add card
 
-$('.deckList').on("click", ".saveCardButton", function() {
+$('.deckList').on("click", ".saveCard", function() {
     var front = $(this).siblings('.frontText').val();
     var back = $(this).siblings('.backText').val();
     var deckId = $(this).closest('.deck').data().id;
-    app.addCard(front, back, deckId);
+    var deckIndex = $(this).closest('.deck').index();
+    var newCard = {
+        front: front,
+        back: back
+    }
+    app.addCard(newCard, deckId, deckIndex);
 
 })
-

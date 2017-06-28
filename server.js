@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 var Deck = require("./models/deckModel")
-var Card = require("./models/cardModel")
+// var Card = require("./models/cardModel")
 
 //find deck
 
@@ -38,9 +38,10 @@ app.post('/decks', function(req, res) {
 //add card
 
 app.post('/decks/:deckId/cards', function(req, res) {
-      var deckId = req.params.deckId
-    Deck.findByIdAndUpdate(deckId, {$push: {"cards": req.body}},function(error, data) {
+      var deckId = req.params.deckId;
+    Deck.findByIdAndUpdate(deckId, {$push: {"cards": req.body}},{new:true}, function(error, data) {
         if (error) throw error;
+        console.log(data)
         res.send(data)
     })
 });
