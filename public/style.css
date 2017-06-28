@@ -1,3 +1,53 @@
+body {
+    background-color: #D6D3F0;
+}
+
 .addCardInputs {
-	display: none;
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.sideColumn {
+    background-color: #C6B9CD;
+    width: 30%;
+    float: left;
+    height: 500px;
+}
+
+.playArea {
+    background-color: #9C92A3;
+    width: 70%;
+    float: right;
+    height: 500px;
+}
+
+.jumbotron {
+    background-color: #0F5257;
+    margin-bottom: 0;
+    color: white;
+}
+
+.section {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.deckList {
+    width: 100%;
+}
+
+.dropdownButton,
+.dropdownButton:hover,
+.dropdownButton:active,
+.dropdownButton:visited,
+.dropdownButton:focus {
+    background-color: #0B3142;
+    height: 70px;
+    color: white;
+    font-size: 28px;
+    box-sizing: border-box;
 }

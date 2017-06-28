@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <title>Digital Flash</title>
 </head>
-
-<body>
-    <div>
+<!-- <div>
         <h1>Digital Flash!</h1>
         <div>
             <h2>Choose Deck</h2>
@@ -24,34 +22,48 @@
             <button class="editDeck"> Edit</button>
             <span> <button class = "playFlash"> Play</button></span>
         </div>
-    </div>
-  
-    <h2> Add Deck </h2>
-    <div>
-        <h3>Name: </h3>
-        <input type="text" id="nameOfAddedDeck">
-        <br>
-    </div>
-    <div>
-        <button type="button" id="addDeckSaveBtn">Save</button>
-        
-        <p>List of Decks:</p>
-        <div class="deckList"></div>
-    </div>
-    <script id="deck-template" type="text/x-handlebars-template">
-        <div class="deck" data-id="{{_id}}">
-            <h1>Name: {{name}}</h1>
-            <button type="button" class="deleteDeck">Delete Deck</button>
-            <div class="cardList"></div>
-            <button type='button' class='addCardSaveBtn'>Add Card</button>
-            <div class="addCardInputs">
-                <h4>Front</h4>
-                <input type="text" class="frontText">
-                <h4>Back</h4>
-                <input type="text" class = "backText">
-                <button type="button" class= "saveCard">Save</button>
+    </div> -->
+
+<body>
+    <div class="section">
+        <div class="jumbotron title">
+            <h1>flashCards</h1>
+        </div>
+        <div class="sideColumn">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle btn-block dropdownButton" type="button" data-toggle="dropdown">Decks
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu deckList">
+                </ul>
+            </div>
+            
+            <div>
+                <h2> Add Deck </h2>
+                <h3>Name: </h3>
+                <input type="text" id="nameOfAddedDeck">
+                <br>
+            </div>
+            <div>
+                <button type="button" id="addDeckSaveBtn">Save</button>
             </div>
         </div>
+        <div class="playArea">
+        <div class="cardList"></div>
+        <div class="addCardInputs">
+            <h4>Front</h4>
+            <input type="text" class="frontText">
+            <h4>Back</h4>
+            <input type="text" class="backText">
+            <button type="button" class="saveCard">Save</button>
+        </div>
+    </div>
+    </div>
+    
+    <script id="deck-template" type="text/x-handlebars-template">
+        <li class="deck" data-id="{{_id}}"><a href="#">{{name}}
+        <button type="button" class="deleteDeck">Delete Deck</button>
+        <button type='button' class='addCardSaveBtn'>Add Card</button>
+        </a></li>
     </script>
     <script id="card-template" type="text/x-handlebars-template">
         <div class="card" data-id="{{_id}}">
