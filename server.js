@@ -14,12 +14,10 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 var Deck = require("./models/deckModel")
-// var Card = require("./models/cardModel")
 
 //find deck
 
 app.get('/decks', function(req, res) {
-    // var deckId = req.params.deckId
     Deck.find(function(error, data) {
         if (error) throw error;
         res.send(data)
@@ -56,7 +54,28 @@ app.put('/decks/:deckId', function(req, res) {
     })
 });
 
+//delete card
 
+app.delete('/decks/:deckId/cards/:cardId', function(req, res) {
+    
+    var deckId = req.params.deckId
+    var cardId = req.params.cardId
+    
+    Deck.findByIdAndUpdate(deckId,{$pull: {"cards": {_id: cardId}}},{new:true}, function (error, data) {
+    if (error) throw error;
+        res.send(data)
+    })
+})
+
+//delete deck
+
+app.delete('/decks/:deckId', function (req, res) {
+  var deckId= req.params.deckId;
+  Deck.findByIdAndRemove(deckId,function (error, data) {
+    if (error) throw error;
+      res.send(data);
+    })
+  })
 
 
 

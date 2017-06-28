@@ -41,13 +41,13 @@
     <script id="deck-template" type="text/x-handlebars-template">
         <div class="deck" data-id="{{_id}}">
             <h1>Name: {{name}}</h1>
+            <button type="button" class="deleteDeck">Delete Deck</button>
             <div class="cardList"></div>
             <button type='button' class='addCardSaveBtn'>Add Card</button>
             <div class="addCardInputs">
                 <h4>Front</h4>
                 <input type="text" class="frontText">
                 <h4>Back</h4>
-               
                 <input type="text" class = "backText">
                 <button type="button" class= "saveCard">Save</button>
             </div>
@@ -57,6 +57,7 @@
         <div class="card" data-id="{{_id}}">
             <h3 class="front"> Front: {{front}}</h3>
             <h3 class="back"> Back: {{back}}</h3>
+            <button type="button" class="deleteCard">Delete Card</button>
         </div>
     </script>
     <script src="jquery/dist/jquery.js"></script>
