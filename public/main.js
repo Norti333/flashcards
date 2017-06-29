@@ -81,28 +81,35 @@ app.getCards();
 $('.show-cards').click(app.getCards)
 
 
-$(".saveCard").click(function() {
+$(".saveCard").click(function () {
 
     var front = $(this).siblings('.frontText').val();
     var back = $(this).siblings('.backText').val();
+            if (back == '' || front == ''){
+                alert("front and back must be filled");
+                return false;
+            }
+
     var hint = $(this).siblings('.hint').val();
     var diff = $(this).siblings('.diif-select').find('#sel1').val();
     var newCard = {
         front: front,
         back: back,
         hint: hint,
-        level:diff,
-    }
-    console.log(newCard)
+        level: diff,
+    };
+    console.log(newCard);
     app.addCard(newCard);
 
-    $(this).siblings('.frontText').val('')
-    $(this).siblings('.backText').val('');
 
+
+    $(this).siblings('.frontText').val('');
+    $(this).siblings('.backText').val('');
+    $(this).siblings('.hint').val('');
 })
 
 
-$('.playArea').on("click", ".deleteCard", function() {
+$('.playArea').on("click", ".deleteCard", function () {
 
     var cardId = $(this).closest(".card").data().id
     var card = app.findCardById(cardId)
@@ -113,7 +120,7 @@ $('.playArea').on("click", ".deleteCard", function() {
 
 
 
-$('.playArea').on("click", ".tryButton", function() {
+$('.playArea').on("click", ".tryButton", function () {
 
 
     var tryValue = $(this).siblings('.tryText').val();
