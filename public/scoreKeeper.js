@@ -3,8 +3,6 @@ scoreCounter = 0;
 
 //when click 'try', attemptsCounter ++
 
-for (var i = 0; i < cards.length; i++) {
-    for (cards[i]) {
         if (attemptsCounter === 1 && tryValue == backText) {
             scoreCounter += 5;
         } else if (attemptsCounter === 2 && tryValue == backText) {
@@ -16,5 +14,6 @@ for (var i = 0; i < cards.length; i++) {
             $('.tryText').hide();
         }
         attemptsCounter = 0
-    }
-}
+
+
+        
