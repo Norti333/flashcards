@@ -63,14 +63,14 @@ var digitalFlashPlayApp = function () {
     };
 };
 
-var app = digitalFlashPlayApp()
+var appPlay = digitalFlashPlayApp()
 
 
 $('.play').click(function(){
-    app.playCards()
+    appPlay.playCards()
 })
 
-$(document).on('click', '.next-button', app.renderCardsPlay)
+$(document).on('click', '.next-button', appPlay.renderCardsPlay)
 
 
 $(document).on("click", ".play-try", function () {
