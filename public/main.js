@@ -98,7 +98,6 @@ $(".saveCard").click(function () {
     var newCard = {
         front: front,
         back: back,
-        hint: hint,
         level: diff,
     };
     console.log(newCard);
