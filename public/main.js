@@ -102,7 +102,7 @@ $('.playArea').on("click", ".deleteCard", function() {
 
 
 
-$('.playArea').on("click", ".try-button", function() {
+$('.playArea').on("click", ".tryButton", function() {
     debugger
     var tryValue = $(this).siblings('.tryText').val();
     console.log(tryValue)
