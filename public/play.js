@@ -31,7 +31,7 @@ var digitalFlashPlayApp = function () {
             return counter = counter + 1;
         } else {
             $('.cardList').append('<h1>Game Over</h1>');
-            $('.cardList').append('<p>' + totalScore + '</p>')
+            $cardList.append('<p>' + 'Total score =' + totalScore + '</p>')
             return counter = 0
 
         }
@@ -56,13 +56,12 @@ var digitalFlashPlayApp = function () {
             }
         }
     }
-    attemptCounter = 0;
-    totalScore = 0;
+    var attemptCounter = 0;
+    var totalScore = 0;
 
     var playAttempt = function () {
         attemptCounter = attemptCounter + 1
         if (attemptCounter == 3) {
-            attemptCounter = 0
             return renderAnswer()
         };
     };
@@ -75,10 +74,12 @@ var digitalFlashPlayApp = function () {
         calcScore()
         $cardList.empty();
         $cardList.append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
-            '<h1>' + 'The answer is:  ' + cards[counter].back + '</h1> </div>')
+            '<h1>' + 'The answer is:  ' + cards[counter - 1].back + '</h1> </div>')
         $cardList.append('<p>' + res + '</p>')
-        $cardList.append('<p>' + 'Score =' + 10 - (3 * attemptCounter) + '</p>')
-        $cardList.append('<p>' + totalScore + '</p>')
+        var levelScore = 10 - (3 * attemptCounter)
+        $cardList.append('<p>' + 'Score =' + levelScore + '</p>')
+        attemptCounter = 0
+        $cardList.append('<p>' + 'Total score =' + totalScore + '</p>')
         $cardList.append('<button type="button" class="btn btn-large btn-block btn-default next-button">next</button>')
 
     }
@@ -113,10 +114,10 @@ $(document).on("click", ".play-try", function () {
     if (tryValue == backText) {
         var response = "Well done!"
         $(this).siblings(".response").html(response)
-        renderAnswer(response)
+        appPlay.renderAnswer(response)
     } else {
         var response = "Try again"
         $(this).siblings(".response").html(response)
-        playAttempt(response)
+        appPlay.playAttempt(response)
     }
 })
