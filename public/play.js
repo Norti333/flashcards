@@ -31,7 +31,7 @@ var digitalFlashPlayApp = function () {
             return counter = counter + 1;
         } else {
             $('.cardList').append('<h1>Game Over</h1>');
-            $cardList.append('<p>' + 'Total score =' + totalScore + '</p>')
+            $('.cardList').append('<p>' + 'Total score =' + totalScore + '</p>')
             return counter = 0
 
         }
