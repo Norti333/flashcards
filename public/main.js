@@ -85,16 +85,16 @@ $(".saveCard").click(function () {
 
     var front = $(this).siblings('.frontText').val();
     var back = $(this).siblings('.backText').val();
-            if (back == '' || front == ''){
-                alert("Please fill in the Front and Back fields.");
-                return false;
-            }
-
-    // var hint = $(this).siblings('.hint').val();
-    // if (hint===""){
-    //     $(this).siblings('.hint').hide();
-    // }
     var diff = $(this).siblings('.diif-select').find('#sel1').val();
+    if (back == '' || front == '' || diff == null ) {
+        alert("Please fill in the Front, Back and Level fields.");
+        return false;
+    }
+
+
+    var diff = $(this).siblings('.diif-select').find('#sel1').val();
+
+
     var newCard = {
         front: front,
         back: back,
