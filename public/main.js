@@ -199,8 +199,11 @@ $('.playArea').on("click", ".deleteCard", function() {
 //     // app.renderCards(deckIndex);
 // })
 
+//try card
+
 $('.cardList').on("click", ".tryButton", function() {
-    var tryValue = $('.tryText').val();
+    var tryValue = $(this).siblings('.tryText').val();
+    console.log(tryValue)
     var cardId = $(this).closest(".card").data().id
     var card = app.findCardById(cardId)
     var backText = card.back;
