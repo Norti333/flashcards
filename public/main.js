@@ -81,7 +81,6 @@ app.getCards();
 $('.show-cards').click(app.getCards)
 
 $(".saveCard").click(function() {
-    debugger
     var front = $(this).siblings('.frontText').val();
     var back = $(this).siblings('.backText').val();
 
@@ -93,7 +92,6 @@ $(".saveCard").click(function() {
 })
 
 $('.playArea').on("click", ".deleteCard", function() {
-    debugger
     var cardId = $(this).closest(".card").data().id
     var card = app.findCardById(cardId)
     app.deleteCard(cardId)
@@ -103,7 +101,6 @@ $('.playArea').on("click", ".deleteCard", function() {
 
 
 $('.playArea').on("click", ".tryButton", function() {
-    debugger
     var tryValue = $(this).siblings('.tryText').val();
     console.log(tryValue)
     var cardId = $(this).closest(".card").data().id

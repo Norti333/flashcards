@@ -78,7 +78,7 @@ $(document).on("click", ".play-try", function () {
     console.log(tryValue)
     var cardId = $(this).closest(".card").data().id
     console.log(cardId)
-    var card = app.findCardByIdPlay(cardId)
+    var card = appPlay.findCardByIdPlay(cardId)
     var backText = card.back;
     if (tryValue == backText) {
         $(this).siblings(".response").html("Well done!")
