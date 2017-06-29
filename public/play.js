@@ -7,6 +7,7 @@ var digitalFlashPlayApp = function () {
 
     var playCards = function () {
         totalScore = 0;
+        attemptCounter = 0;
         $.ajax({
             url: '/cards',
             type: 'get',
@@ -33,9 +34,9 @@ var digitalFlashPlayApp = function () {
         } else {
             $('.cardList').append('<h2>Game Over</h2>');
             $('.cardList').append('<p>' + 'Total score =' + totalScore + '</p>')
+            attemptCounter = 0;
+            counter = 0;
             totalScore = 0;
-            return counter = 0;
-
         }
     };
 
@@ -69,16 +70,17 @@ var digitalFlashPlayApp = function () {
     };
 
     var calcScore = function () {
-        totalScore = totalScore + 10 - (3 * attemptCounter)
+        totalScore = totalScore + cards[counter-1].level*(10 - (3 * attemptCounter))
     };
     var renderAnswer = function (res) {
+        console.log(attemptCounter)
         var $cardList = $('.cardList')
         calcScore()
         $cardList.empty();
         $cardList.append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
-            '<h1>' + 'The answer is:  ' + cards[counter - 1].back + '</h1> </div>')
+            '<h2>' + 'The answer is:  ' + cards[counter - 1].back + '</h2> </div>')
         $cardList.append('<p>' + res + '</p>')
-        var levelScore = 10 - (3 * attemptCounter)
+        var levelScore = cards[counter-1].level*(10 - (3 * attemptCounter))
         $cardList.append('<p>' + 'Score =' + levelScore + '</p>')
         attemptCounter = 0
         $cardList.append('<p>' + 'Total score =' + totalScore + '</p>')

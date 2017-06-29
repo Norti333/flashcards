@@ -46,7 +46,6 @@ h1 {
     width: 100%;
 }
 
-
 .spacing {
     margin: 20px;
 }
@@ -64,10 +63,7 @@ h1 {
     float: left;
     text-align: center;
     padding-bottom: 30px;
-    padding-top: 20px;
     background-color: #E0CAA5;
-    box-shadow: 0px 0px 15px grey;
-    font-family: 'PT Sans', sans-serif;
 }
 
 .cardList {
@@ -80,15 +76,21 @@ h1 {
 }
 
 .front,
-.back
-
- {
+.back {
     font-family: 'Roboto Slab', serif;
-    height: 25%;
+    height: 20%;
 }
 
-.response{
-    height:20px;
+.front {
+    margin-bottom: 20px;
+}
+
+.back {
+    margin-bottom: 5px;
+}
+
+.response {
+    height: 20px;
     margin-bottom: 7px;
 }
 
@@ -96,26 +98,22 @@ h1 {
     margin-bottom: 7px;
 }
 
-
 .checkbox-inline {
     font-family: 'PT Sans', sans-serif;
 }
 
-.saveCard ,
+.saveCard,
 .saveCard:hover,
 .saveCard:active,
 .saveCard:focus,
-.saveCard:visited,
-.play,
-.show-cards {
+.saveCard:visited {
     background-color: #4F0007;
     border: none;
     color: white;
 }
 
 .form-control {
-        font-family: 'PT Sans', sans-serif;
-
+    font-family: 'PT Sans', sans-serif;
 }
 
 .editCard,

@@ -22,20 +22,20 @@
                     <input type="text" class="form-control frontText">
                     <h4>Back</h4>
                     <input type="text" class="form-control backText">
-                    <h4>Hint</h4>
-                    <input type="text" class="form-control backText">
+                    <h4 class="hint">Hint</h4>
+                    <input type="text" class="form-control hint">
                     <h4>Level</h4>
-                    <div class="form-group">
+                    <div class="form-group diif-select">
                         <select class="form-control" id="sel1">
-                            <option disabled selected value> Select an option  </option>
+                            <option disabled selected value> Select an option </option>
                             <option value="1">Easy</option>
                             <option value="2">Medium</option>
                             <option value="3">Difficult</option>
                         </select>
                     </div>
                     <button type="button" class="btn btn-block saveCard">SAVE</button>
-                    <button type="button" class="btn btn-block play">PLAY</button>
-                    <button type="button" class="btn btn-block show-cards">SHOW</button>
+                    <button type="button" class="btn btn-block btn-success play">PLAY</button>
+                    <button type="button" class="btn btn-block btn-danger show-cards">SHOW</button>
                 </div>
             </div>
         </div>
@@ -48,23 +48,24 @@
         <script src="main.js"></script>
         <script src="play.js"></script>
         <script id="card-template" type="text/x-handlebars-template">
-            <div class="card" data-id="{{_id}}">
-                <h3 class="front"> {{front}}</h3>
-                <h4 class="back">{{back}}</h4>
-                <button type="button" class="btn btn-default editCard">Edit</button>
-                <button type="button" class="btn btn-default deleteCard">Delete</button>
-            </div>
+        
+                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-12" data-id={{_id}}>
+                    <h2 class="front">{{front}}</h2>
+                    <h4>Hint:{{hint}}</h4>
+                    <h3 class="back">{{back}}</h3>
+                    <button type="button" class="btn btn-default editCard">Edit</button>
+                    <button type="button" class="btn btn-default deleteCard">Delete</button>
+                </div>
         </script>
         <script id="render-card" type="text/x-handlebars-template">
-                <div class="spacingPlay">
+          <div class="spacingPlay">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 card" data-id={{_id}}>
                     <h2 class="front">{{front}}</h2>
                     <div class='response'></div>
                     <input type="text" class="form-control tryText" placeholder="Enter answer here">
                     <button type="button" class="btn btn-default play-try">Try</button>
-                    <button type="button" class="btn btn-default next-button">Skip</button>
-            </div>
-            </div>
+                </div>
+              
         </script>
 </body>
 
