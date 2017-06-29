@@ -6,6 +6,7 @@ var digitalFlashPlayApp = function () {
     }
 
     var playCards = function () {
+        totalScore = 0;
         $.ajax({
             url: '/cards',
             type: 'get',
@@ -32,7 +33,8 @@ var digitalFlashPlayApp = function () {
         } else {
             $('.cardList').append('<h1>Game Over</h1>');
             $('.cardList').append('<p>' + 'Total score =' + totalScore + '</p>')
-            return counter = 0
+            totalScore = 0;
+            return counter = 0;
 
         }
     };
