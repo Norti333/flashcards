@@ -1,6 +1,4 @@
-/*.addCardInputs {
-    display: none;
-}*/
+
 
 h1 {
     text-align: center;
@@ -129,7 +127,23 @@ h1 {
     margin: 50px;
 }
 
-/*.hintButton,
-.play-try {
-    margin-top: 40px;
-}*/
+
+#login_form {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    right: 30%;
+    bottom: 40%;
+    font-size: 18px;
+}
+
+#loginForm {
+    background-color: #DDDDDD;
+    border-style: solid;
+    border-width: 1px;
+}
+.loginFlash {
+    white-space: nowrap;
+    color: #4F0007;
+    font-size: 32px;
+}
