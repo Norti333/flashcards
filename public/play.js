@@ -1,51 +1,40 @@
 var digitalFlashPlayApp = function () {
-    var deck = ''
     var cards = []
     var counter = 0
     var errorHandler = function (err, status) {
         console.error(status);
     }
-    /*
-        var getSelectedDeck = function (deckId) {
-            $.ajax({
-                url: '/decks/' + deckId,
-                type: "/get",
-                error: errorHandler,
-                success: function (data) {
-                    //data = the deck that is equal to the id given
-                    deck = data
 
-                }
-            })
-        };
-    */
-    var getCards = function (deckId) {
-        for (var i = 0; i < deck.cards.length; i++) {
-            var cardId = deck.cards[i]
-            $.ajax({
-                url: '/cards/' + cardId,
-                type: "/get",
-                error: errorHandler,
-                success: function (data) {
-                    cards.push(data)
-                }
-            })
-        }
-        shuffleCards()
-        renderCards()
-    };
-
-
-    var renderCards = function () {
-        $('.playBox').empty();
-        var source = $('#').html();
-        var template = Handlebars.compile(source);
-        var newHTML = template(cards[counter]);
-        $('.playBox').append(newHTML);
-        return counter = counter + 1;
-        // need to add an if when counter == cards.length
-        // it will set a play over and reset counter
+    var playCards = function () {
+        $.ajax({
+            url: '/cards',
+            type: 'get',
+            error: function (err, status) {
+                console.error(status)
+            },
+            success: function (data) {
+                cards = data;
+                shuffleCards()
+                renderCardsPlay()
+            }
+        })
     }
+
+
+    var renderCardsPlay = function () {
+        $('.cardList').empty();
+        if (counter < cards.length) {
+            var source = $('#render-card').html();
+            var template = Handlebars.compile(source);
+            var newHTML = template(cards[counter]);
+            $('.cardList').append(newHTML);
+            return counter = counter + 1;
+        } else {
+            $('.cardList').append('<h1>Game Over</h1>');
+            return counter = 0
+
+        }
+    };
 
 
     var shuffleCards = function () {
@@ -59,19 +48,41 @@ var digitalFlashPlayApp = function () {
         return cards = shuffleArray
     }
 
+    var findCardByIdPlay = function (cardId) {
+        for (var i = 0; i < cards.length; i++) {
+            if (cards[i]._id == cardId) {
+                return cards[i];
+            }
+        }
+    }
+
     return {
-        getSelectedDeck: getSelectedDeck,
-        renderCards: renderCards,
+        renderCardsPlay: renderCardsPlay,
+        playCards: playCards,
+        findCardByIdPlay: findCardByIdPlay,
     };
 };
 
-var app = digitalFlashPlayApp
-//when pressing play
-$('').on('click','.play',function(){
-    var deckId = $(this).closest('option').data().id;
-    getCards(deckId)
+var app = digitalFlashPlayApp()
+
+
+$('.play').click(function(){
+    app.playCards()
 })
-//when pressing next
-$('').on('click','.',renderCards)
+
+$(document).on('click', '.next-button', app.renderCardsPlay)
 
 
+$(document).on("click", ".play-try", function () {
+    var tryValue = $(this).siblings('.tryText').val();
+    console.log(tryValue)
+    var cardId = $(this).closest(".card").data().id
+    console.log(cardId)
+    var card = app.findCardByIdPlay(cardId)
+    var backText = card.back;
+    if (tryValue == backText) {
+        $(this).siblings(".response").html("Well done!")
+    } else {
+        $(this).siblings(".response").html("Try again")
+    }
+})
