@@ -13,21 +13,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-var Deck = require("./models/deckModel")
+var Card = require("./models/cardModel")
 
-//find deck
+//find cards
 
-app.get('/decks', function(req, res) {
-    Deck.find(function(error, data) {
+app.get('/cards', function(req, res) {
+    Card.find(function(error, data) {
         if (error) throw error;
         res.send(data)
+
     })
 })
 
-//add deck
+//add card
 
-app.post('/decks', function(req, res) {
-    Deck.create(req.body, function(error, data) {
+app.post('/cards', function(req, res) {
+    Card.create(req.body, function(error, data) {
         if (error) throw error;
         res.send(data)
     })
@@ -35,20 +36,20 @@ app.post('/decks', function(req, res) {
 
 //add card
 
-app.post('/decks/:deckId/cards', function(req, res) {
-      var deckId = req.params.deckId;
-    Deck.findByIdAndUpdate(deckId, {$push: {"cards": req.body}},{new:true}, function(error, data) {
-        if (error) throw error;
-        console.log(data)
-        res.send(data)
-    })
-});
+// app.post('/decks/:deckId/cards', function(req, res) {
+//       var deckId = req.params.deckId;
+//     Deck.findByIdAndUpdate(deckId, {$push: {"cards": req.body}},{new:true}, function(error, data) {
+//         if (error) throw error;
+//         console.log(data)
+//         res.send(data)
+//     })
+// });
 
 //update deck
 
-app.put('/decks/:deckId', function(req, res) {
-    var deckId = req.params.deckId
-    Deck.findByIdAndUpdate(req.body, { new: true }, function(error, data) {
+app.put('/cards/:cardId', function(req, res) {
+    var cardId = req.params.cardId
+    Card.findByIdAndUpdate(req.body, { new: true }, function(error, data) {
         if (error) throw error;
         res.send(data)
     })
@@ -56,22 +57,22 @@ app.put('/decks/:deckId', function(req, res) {
 
 //delete card
 
-app.delete('/decks/:deckId/cards/:cardId', function(req, res) {
+// app.delete('/decks/:deckId/cards/:cardId', function(req, res) {
     
-    var deckId = req.params.deckId
-    var cardId = req.params.cardId
+//     var deckId = req.params.deckId
+//     var cardId = req.params.cardId
     
-    Deck.findByIdAndUpdate(deckId,{$pull: {"cards": {_id: cardId}}},{new:true}, function (error, data) {
-    if (error) throw error;
-        res.send(data)
-    })
-})
+//     Deck.findByIdAndUpdate(deckId,{$pull: {"cards": {_id: cardId}}},{new:true}, function (error, data) {
+//     if (error) throw error;
+//         res.send(data)
+//     })
+// })
 
-//delete deck
+// //delete deck
 
-app.delete('/decks/:deckId', function (req, res) {
-  var deckId= req.params.deckId;
-  Deck.findByIdAndRemove(deckId,function (error, data) {
+app.delete('/cards/:cardId', function (req, res) {
+  var cardId= req.params.cardId;
+  Card.findByIdAndRemove(cardId,function (error, data) {
     if (error) throw error;
       res.send(data);
     })
