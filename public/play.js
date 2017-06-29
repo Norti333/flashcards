@@ -74,6 +74,9 @@ var digitalFlashPlayApp = function () {
     };
     var renderAnswer = function (res) {
         console.log(attemptCounter)
+        if (res == undefined){
+            res = "Better luck next time"
+        }
         var $cardList = $('.cardList')
         calcScore()
         $cardList.empty();
