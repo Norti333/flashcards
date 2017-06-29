@@ -48,9 +48,10 @@
         <script src="main.js"></script>
         <script src="play.js"></script>
         <script id="card-template" type="text/x-handlebars-template">
-            <div class="card" data-id="{{_id}}">
-                <h3 class="front"> {{front}}</h3>
-                <h4 class="back">{{back}}</h4>
+            <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-12" data-id={{_id}}>
+                <h4 class="front"> Question:   {{front}}</h4>
+                <h4>Hint: {{hint}}</h4>
+                <h4 class="back">Answer:  {{back}}</h4>
                 <button type="button" class="btn btn-default deleteCard">Delete</button>
             </div>
         </script>
