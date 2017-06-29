@@ -91,11 +91,7 @@ var digitalFlashApp = function() {
                 return cards[i];
             }
         }
-<<<<<<< HEAD
     }
-=======
-
->>>>>>> new-test
 
     return {
         addCard: addCard,
@@ -110,20 +106,13 @@ var digitalFlashApp = function() {
 var app = digitalFlashApp();
 app.getCards();
 
-<<<<<<< HEAD
 
-//add card
-=======
 $('.show-cards').click(app.getCards)
->>>>>>> new-test
 
 $(".saveCard").click(function() {
     var front = $(this).siblings('.frontText').val();
     var back = $(this).siblings('.backText').val();
-<<<<<<< HEAD
 
-=======
->>>>>>> new-test
     var newCard = {
         front: front,
         back: back

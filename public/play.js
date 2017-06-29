@@ -34,9 +34,7 @@ var digitalFlashPlayApp = function () {
             return counter = 0
 
         }
-        // need to add an if when counter == cards.length
-        // it will set a play over and reset counter
-    }
+    };
 
 
     var shuffleCards = function () {

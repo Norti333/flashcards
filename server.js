@@ -25,8 +25,6 @@ app.get('/cards', function(req, res) {
     })
 })
 
-//add card
-
 app.post('/cards', function(req, res) {
     Card.create(req.body, function(error, data) {
         if (error) throw error;
