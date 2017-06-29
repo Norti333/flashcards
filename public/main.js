@@ -85,11 +85,15 @@ $(".saveCard").click(function() {
 
     var front = $(this).siblings('.frontText').val();
     var back = $(this).siblings('.backText').val();
-
+    var hint = $(this).siblings('.hint').val();
+    var diff = $(this).siblings('.diif-select').find('#sel1').val();
     var newCard = {
         front: front,
-        back: back
+        back: back,
+        hint: hint,
+        level:diff,
     }
+    console.log(newCard)
     app.addCard(newCard);
 
     $(this).siblings('.frontText').val('')

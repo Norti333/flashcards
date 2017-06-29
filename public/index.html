@@ -23,9 +23,9 @@
                     <h4>Back</h4>
                     <input type="text" class="form-control backText">
                     <h4>Hint</h4>
-                    <input type="text" class="form-control backText">
+                    <input type="text" class="form-control hint">
                     <h4>Level</h4>
-                    <div class="form-group">
+                    <div class="form-group diif-select">
                         <select class="form-control" id="sel1">
                             <option disabled selected value> Select an option  </option>
                             <option value="1">Easy</option>
@@ -55,19 +55,11 @@
             </div>
         </script>
         <script id="render-card" type="text/x-handlebars-template">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 card" data-id={{_id}}>
-                    <h1>{{front}}</h1>
-                    <p class='response'></p>
-                    <input type="text" class="form-control tryText" placeholder="Enter answer here">
-                    <button type="button" class="btn btn-large btn-block btn-default play-try">try</button>
-<<<<<<< HEAD
-                    <button type="button" class="btn btn-large btn-block btn-default next-button">next</button>
-=======
-
-
->>>>>>> 2cf795923eac65022364efdec401a9433664f371
-                </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 card" data-id={{_id}}>
+                <h2>{{front}}</h2>
+                <p class='response'></p>
+                <input type="text" class="form-control tryText" placeholder="Enter answer here">
+                <button type="button" class="btn btn-large btn-block btn-default play-try">try</button>
             </div>
         </script>
 </body>
