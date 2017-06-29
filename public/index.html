@@ -10,12 +10,17 @@
 
 <body>
     <div class="section">
+
+
         <div class="jumbotron title">
             FLASH CARDS
         </div>
         <div class="sideColumn">
             <div class="spacing">
+<<<<<<< HEAD
 
+=======
+>>>>>>> new-test
                 <div class="addCardInputs">
                     <h2>Add a Card</h2>
                     <h4>Front</h4>
@@ -24,6 +29,12 @@
                     <input type="text" class="backText">
                     <button type="button" class="saveCard">Save</button>
                 </div>
+
+                <button type="button" class="btn btn-info play">play</button>
+                <button type="button" class="btn btn-info show-cards">Show</button>
+
+
+
             </div>
              
         </div>
@@ -31,9 +42,22 @@
             <div class="cardList"></div>
            
         </div>
+<<<<<<< HEAD
         <script>
        
         </script>
+=======
+
+
+
+        <script src="jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="handlebars/dist/handlebars.js"></script>
+        <script src="main.js"></script>
+        <script src="play.js"></script>
+
+
+>>>>>>> new-test
         <script id="card-template" type="text/x-handlebars-template">
             <div class="card" data-id="{{_id}}">
                 <h3 class="front"> {{front}}</h3>
@@ -43,11 +67,29 @@
                 <h4 class="response"></h4>
                 <button type="button" class="deleteCard">Delete Card</button>
             </div>
+<<<<<<< HEAD
+=======
         </script>
-        <script src="jquery/dist/jquery.js"></script>
-        <script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
-        <script type="text/javascript" src="handlebars/dist/handlebars.js"></script>
-        <script src="main.js"></script>
+
+        <script id="render-card" type="text/x-handlebars-template">
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 card" data-id={{_id}}>
+                    <h1>{{front}}</h1>
+                    <p class='response'></p>
+                    <input type="text" class="form-control tryText" placeholder="Enter answer here">
+                    <button type="button" class="btn btn-large btn-block btn-default play-try">try</button>
+                    <button type="button" class="btn btn-large btn-block btn-default next-button">next</button>
+
+
+                </div>
+
+            </div>
+>>>>>>> new-test
+        </script>
+
+
 </body>
 
 </html>
