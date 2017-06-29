@@ -173,6 +173,8 @@ $(".saveCard").click(function() {
         back: back
     }
     console.log(newCard)
+var cardId = app.findCardById(cardId);
+    console.log(cardId)
 
     app.addCard(newCard);
 
@@ -181,7 +183,6 @@ $(".saveCard").click(function() {
 
 //delete card
 $('.playArea').on("click", ".deleteCard", function() {
-    var cardIndex = $(this).closest('.card').index()
     var cardId = app.findCardById(cardId);
     console.log(cardId)
     app.deleteCard(cardId)
@@ -207,8 +208,6 @@ $('.cardList').on("click", ".tryButton", function() {
     var backText=card.back;
         if (tryValue == backText) {
             $(this).siblings(".response").html("Well done!")
-
-            console.log("Well done")
         } else { 
             $(this).siblings(".response").html("Try again")
         }
