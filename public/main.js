@@ -101,8 +101,6 @@ $(".saveCard").click(function () {
     console.log(newCard);
     app.addCard(newCard);
 
-
-
     $(this).siblings('.frontText').val('');
     $(this).siblings('.backText').val('');
     $(this).siblings('.hint').val('');
