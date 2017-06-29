@@ -97,11 +97,9 @@ $(".saveCard").click(function() {
 
 })
 
-<<<<<<< HEAD
+
 $('.playArea').on("click", ".deleteCard", function() {
-=======
-$('.playArea').on("click", ".deleteCard", function () {
->>>>>>> 2cf795923eac65022364efdec401a9433664f371
+
     var cardId = $(this).closest(".card").data().id
     var card = app.findCardById(cardId)
     app.deleteCard(cardId)
@@ -110,12 +108,10 @@ $('.playArea').on("click", ".deleteCard", function () {
 
 
 
-<<<<<<< HEAD
+
 $('.playArea').on("click", ".tryButton", function() {
-=======
-$('.playArea').on("click", ".tryButton", function () {
-    debugger
->>>>>>> 2cf795923eac65022364efdec401a9433664f371
+
+
     var tryValue = $(this).siblings('.tryText').val();
     console.log(tryValue)
     var cardId = $(this).closest(".card").data().id
