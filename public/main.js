@@ -91,7 +91,10 @@ $(".saveCard").click(function () {
         return false;
     }
 
-    var hint = $(this).siblings('.hint').val();
+
+    var diff = $(this).siblings('.diif-select').find('#sel1').val();
+
+
     var newCard = {
         front: front,
         back: back,
