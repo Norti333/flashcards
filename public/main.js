@@ -192,7 +192,5 @@ $('.deckList').on("click", ".deleteDeck", function() {
 
 //show deck of cards
 $('.deckList').on("click", ".deck", function() {
-    console.log("here")
-    var deckIndex=$(this).closest('.deck').index();
-    app.renderCards(deckIndex);
+    // app.renderCards(deckIndex);
 })
