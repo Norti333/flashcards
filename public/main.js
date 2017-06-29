@@ -1,10 +1,6 @@
 var digitalFlashApp = function() {
     var cards = []
 
-<<<<<<< HEAD
-
-=======
->>>>>>> new-test
     var getCards = function() {
         $.ajax({
             url: '/cards',
@@ -19,10 +15,6 @@ var digitalFlashApp = function() {
         })
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> new-test
     var renderCards = function() {
         $('.cardList').empty()
         var source = $('#card-template').html();
@@ -33,7 +25,6 @@ var digitalFlashApp = function() {
         }
     }
 
-<<<<<<< HEAD
     var addCard = function(newCard) {
         $.ajax({
             url: "/cards",
@@ -45,31 +36,11 @@ var digitalFlashApp = function() {
             success: function(data) {
                 cards.push(data);
                 renderCards();
-=======
->>>>>>> new-test
 
             }
         });
     }
 
-<<<<<<< HEAD
-=======
-    var addCard = function(newCard) {
-            $.ajax({
-                url: "/cards",
-                type: "post",
-                data: newCard,
-                error: function(err, status) {
-                    console.error(status);
-                },
-                success: function(data) {
-                    cards.push(data);
-                    renderCards();
-
-                }
-            });
-        }
->>>>>>> new-test
 
     var deleteCard = function(cardId) {
         $.ajax({
