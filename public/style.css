@@ -63,7 +63,8 @@ h1 {
     height: 200px;
     float: left;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
+    padding-top: 20px;
     background-color: #E0CAA5;
     box-shadow: 0px 0px 15px grey;
     font-family: 'PT Sans', sans-serif;
@@ -79,10 +80,22 @@ h1 {
 }
 
 .front,
-.back {
+.back
+
+ {
     font-family: 'Roboto Slab', serif;
-    height: 30%;
+    height: 25%;
 }
+
+.response{
+    height:20px;
+    margin-bottom: 7px;
+}
+
+.tryText {
+    margin-bottom: 7px;
+}
+
 
 .checkbox-inline {
     font-family: 'PT Sans', sans-serif;
@@ -105,7 +118,13 @@ h1 {
 
 }
 
-.glyphicon {
-    float: right;
-    margin-right: 20px;
+.editCard,
+.deleteCard,
+.play-try,
+.next-button {
+    width: 100px
+}
+
+.spacingPlay {
+    margin: 50px;
 }

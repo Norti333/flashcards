@@ -51,19 +51,19 @@
             <div class="card" data-id="{{_id}}">
                 <h3 class="front"> {{front}}</h3>
                 <h4 class="back">{{back}}</h4>
+                <button type="button" class="btn btn-default editCard">Edit</button>
                 <button type="button" class="btn btn-default deleteCard">Delete</button>
             </div>
         </script>
         <script id="render-card" type="text/x-handlebars-template">
-            <div class="row">
+                <div class="spacingPlay">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 card" data-id={{_id}}>
-                    <h1>{{front}}</h1>
-                    <p class='response'></p>
+                    <h2 class="front">{{front}}</h2>
+                    <div class='response'></div>
                     <input type="text" class="form-control tryText" placeholder="Enter answer here">
-                    <button type="button" class="btn btn-large btn-block btn-default play-try">try</button>
-                    <button type="button" class="btn btn-large btn-block btn-default next-button">next</button>
-
-                </div>
+                    <button type="button" class="btn btn-default play-try">Try</button>
+                    <button type="button" class="btn btn-default next-button">Skip</button>
+            </div>
             </div>
         </script>
 </body>
