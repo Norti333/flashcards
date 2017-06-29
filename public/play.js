@@ -31,6 +31,7 @@ var digitalFlashPlayApp = function () {
             return counter = counter + 1;
         } else {
             $('.cardList').append('<h1>Game Over</h1>');
+            $('.cardList').append('<p>' + totalScore + '</p>')
             return counter = 0
 
         }
@@ -55,18 +56,46 @@ var digitalFlashPlayApp = function () {
             }
         }
     }
+    attemptCounter = 0;
+    totalScore = 0;
+
+    var playAttempt = function () {
+        attemptCounter = attemptCounter + 1
+        if (attemptCounter == 3) {
+            attemptCounter = 0
+            return renderAnswer()
+        };
+    };
+
+    var calcScore = function () {
+        totalScore = totalScore + 10 - (3 * attemptCounter)
+    };
+    var renderAnswer = function (res) {
+        var $cardList = $('.cardList')
+        calcScore()
+        $cardList.empty();
+        $cardList.append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+            '<h1>' + 'The answer is:  ' + cards[counter].back + '</h1> </div>')
+        $cardList.append('<p>' + res + '</p>')
+        $cardList.append('<p>' + 'Score =' + 10 - (3 * attemptCounter) + '</p>')
+        $cardList.append('<p>' + totalScore + '</p>')
+        $cardList.append('<button type="button" class="btn btn-large btn-block btn-default next-button">next</button>')
+
+    }
 
     return {
         renderCardsPlay: renderCardsPlay,
         playCards: playCards,
         findCardByIdPlay: findCardByIdPlay,
+        renderAnswer: renderAnswer,
+        playAttempt: playAttempt,
     };
 };
 
 var appPlay = digitalFlashPlayApp()
 
 
-$('.play').click(function(){
+$('.play').click(function () {
     appPlay.playCards()
 })
 
@@ -80,9 +109,14 @@ $(document).on("click", ".play-try", function () {
     console.log(cardId)
     var card = appPlay.findCardByIdPlay(cardId)
     var backText = card.back;
+
     if (tryValue == backText) {
-        $(this).siblings(".response").html("Well done!")
+        var response = "Well done!"
+        $(this).siblings(".response").html(response)
+        renderAnswer(response)
     } else {
-        $(this).siblings(".response").html("Try again")
+        var response = "Try again"
+        $(this).siblings(".response").html(response)
+        playAttempt(response)
     }
 })
