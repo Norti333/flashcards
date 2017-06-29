@@ -90,7 +90,10 @@ $(".saveCard").click(function () {
                 return false;
             }
 
-    var hint = $(this).siblings('.hint').val();
+    // var hint = $(this).siblings('.hint').val();
+    // if (hint===""){
+    //     $(this).siblings('.hint').hide();
+    // }
     var diff = $(this).siblings('.diif-select').find('#sel1').val();
     var newCard = {
         front: front,

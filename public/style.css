@@ -64,6 +64,8 @@ h1 {
     text-align: center;
     padding-bottom: 30px;
     background-color: #E0CAA5;
+    box-shadow: 0px 0px 15px grey;
+    
 }
 
 .cardList {
@@ -78,12 +80,12 @@ h1 {
 .front,
 .back {
     font-family: 'Roboto Slab', serif;
-    height: 20%;
+    height: 25%;
 }
 
-.front {
+/*.front {
     margin-bottom: 20px;
-}
+}*/
 
 .back {
     margin-bottom: 5px;
@@ -126,3 +128,8 @@ h1 {
 .spacingPlay {
     margin: 50px;
 }
+
+/*.hintButton,
+.play-try {
+    margin-top: 40px;
+}*/
