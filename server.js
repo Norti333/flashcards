@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/digitalflashDB', function() {
+mongoose.connect(process.env.CONNECTION_STRING||'mongodb://localhost/digitalflashDB', function() {
     console.log("DB connection established!!!");
 })
 
@@ -53,8 +53,6 @@ app.delete('/cards/:cardId', function (req, res) {
   })
 
 
+app.listen(process.env.PORT || '8080');
 
 
-app.listen(3000, function() {
-    console.log('Server up and running on port 3000 ;-)');
-});
