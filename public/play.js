@@ -25,7 +25,6 @@ var digitalFlashPlayApp = function () {
 
     var renderCardsPlay = function () {
         attemptCounter = 0;
-        counter = 0;
         totalScore = 0;
         $('.cardList').empty();
         if (counter < cards.length) {
